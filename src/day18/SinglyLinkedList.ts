@@ -1,7 +1,7 @@
 export default class SinglyLinkedList<T> {
     public length: number;
-
-    
+    private data: T;
+    public head: T;
 
     constructor() {
     }
