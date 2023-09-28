@@ -1,7 +1,13 @@
+
+class Node<T> {
+    public data: T;
+    public next: T;
+}
+
 export default class SinglyLinkedList<T> {
     public length: number;
-    private data: T;
-    public head: T;
+    public head: Node<T>;
+    public tail: Node<T>;
 
     constructor() {
     }

@@ -30,7 +30,7 @@ export default class ArrayList<T> {
     append(item: T): void {
         this.length++
         if (this.length > this.capacity) this.capacity++;
-        this.data[this.data.length - 1] = item;
+        this.data[this.length - 1] = item;
 }
     remove(item: T): T | undefined {
         let removed
@@ -40,7 +40,7 @@ export default class ArrayList<T> {
                 removed = this.data[i]
                 this.data[i] = this.data[i + 1]
                 this.length--
-                return
+                return removed
             }
         }
         return removed
