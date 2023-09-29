@@ -21,12 +21,31 @@ export default class DoublyLinkedList<T> {
         this.head = newNode
         newNode.next = oldHead
         oldHead.prev = newNode
+        length++
 }
     insertAt(item: T, idx: number): void {
-
+        let newNode = new Node<T>
+        newNode.data = item
+        let current = this.head
+        for (let i = 0; i < idx; i++) {
+            if (current.next) current = current.next
+        }
+        // WIP
+        let oldNext = current.next.next
+        current.next = newNode
+        newNode.prev = current
 }
     append(item: T): void {
-
+        let newNode = new Node<T>
+        newNode.data = item
+        if (!this.head) this.head = newNode
+        let current = this.head
+        for (let i = 0; i < this.length - 1; i++) {
+            if (current.next) current = current.next
+        }
+        current.next = newNode
+        newNode.prev = current
+        this.length++
 }
     remove(item: T): T | undefined {
 
