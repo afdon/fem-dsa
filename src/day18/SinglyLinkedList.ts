@@ -7,7 +7,7 @@ class Node<T> {
 export default class SinglyLinkedList<T> {
     public length: number; // why does it need a public length defined?
     public head: Node<T>;
-    public tail?: Node<T>; // needed?
+    // public tail?: Node<T>; // needed?
 
     constructor() {
     }
@@ -26,7 +26,7 @@ export default class SinglyLinkedList<T> {
         let current = this.head
         for (let i = 0; i < idx; i++) {
             if (current.next) current = current.next
-        } // now i is 1 less than idx
+        } // now, i is 1 less than idx
         let oldNodeAtIdx = current.next
         current.next = newNode
         newNode.next = oldNodeAtIdx
@@ -58,7 +58,7 @@ export default class SinglyLinkedList<T> {
             i++
         }
         // now, current.next is the item to remove
-        if (current.next) current.next = current.next.next
+        if (current.next && current.next.data === item) current.next = current.next.next
         return removed
 }
     get(idx: number): T | undefined {
@@ -69,13 +69,18 @@ export default class SinglyLinkedList<T> {
             if (current.next) current = current.next
         }
         // now, current.next is the node at idx
-        if (current.next) return current.next.data // add if condition to appease TS
+        if (current.next) return current.next.data // add if cond't to appease TS
 }
     removeAt(idx: number): T | undefined {
         if (!this.head) return undefined
         if (idx > this.length) return undefined
-        // wip
-
+        let removed
+        let current = this.head
+        for (let i = 0; i < idx; i++) {
+            if (current.next) current = current.next
+        }
+        if (current.next) current.next = current.next.next
         this.length--
 }
 }
+
