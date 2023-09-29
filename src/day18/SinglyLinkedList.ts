@@ -72,6 +72,10 @@ export default class SinglyLinkedList<T> {
         if (current.next) return current.next.data // add if condition to appease TS
 }
     removeAt(idx: number): T | undefined {
+        if (!this.head) return undefined
+        if (idx > this.length) return undefined
+        // wip
 
+        this.length--
 }
 }
