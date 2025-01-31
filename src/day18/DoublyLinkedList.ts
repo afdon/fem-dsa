@@ -30,7 +30,8 @@ export default class DoublyLinkedList<T> {
         for (let i = 0; i < idx; i++) {
             if (current.next) current = current.next
         }
-        // WIP
+        // WIP - take care of the case where it is undefined.
+        if (current.next.next)
         let oldNext = current.next.next
         current.next = newNode
         newNode.prev = current
@@ -57,3 +58,4 @@ export default class DoublyLinkedList<T> {
 
 }
 }
+
